@@ -22,9 +22,17 @@ def convertToDigit(n, suffix):
  
 # Function to convert a given number (max 9-digits) into words
 def convert(n):
+    # add digits at ten million and hundred million place
+    result = convertToDigit((n // 1000000000) % 100, "Billion, ")
+ 
+    # add digits at ten million and hundred million place
+    result += convertToDigit((n // 10000000) % 100, "Crore, ")
+ 
+    # add digits at hundred thousand and one million place
+    result += convertToDigit(((n // 100000) % 100), "Lakh, ")
  
     # add digits at thousand and tens thousand place
-    result += convertToDigit(((n // 1000) % 100), "Thousand")
+    result += convertToDigit(((n // 1000) % 100), "Thousand ")
  
     # add digit at hundred place
     result += convertToDigit(((n // 100) % 10), "Hundred")
